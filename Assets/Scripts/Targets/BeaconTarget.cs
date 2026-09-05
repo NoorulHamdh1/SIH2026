@@ -8,6 +8,11 @@ public class BeaconTarget : MonoBehaviour
     [Header("Initial Position")]
     [SerializeField] private Vector3 initialPosition = new Vector3(0f, 0f, 100f);
 
+    [Header("Random Spawn")]
+    [SerializeField] private bool randomizeInitialPosition = false;
+    [SerializeField] private float randomXRange = 20f;
+    [SerializeField] private float randomYRange = 15f;
+
     [Header("Beacon Size")]
     [SerializeField, Range(5f, 20f)]
     private float beaconSizePixels = 10f;
@@ -23,6 +28,16 @@ public class BeaconTarget : MonoBehaviour
     private void Start()
     {
         simulationTime = 0f;
+
+        if (randomizeInitialPosition)
+        {
+            initialPosition = new Vector3(
+                Random.Range(-randomXRange, randomXRange),
+                Random.Range(-randomYRange, randomYRange),
+                initialPosition.z
+            );
+        }
+
         transform.position = initialPosition;
 
         if (targetCamera == null)

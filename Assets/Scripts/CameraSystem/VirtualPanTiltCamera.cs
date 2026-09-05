@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class VirtualPanTiltCamera : MonoBehaviour
 {
     [Header("Pan Settings")]
-    [SerializeField]
+    [SerializeField, Range(5f, 10f)]
     private float maxPanSpeed = 5f;
 
     [SerializeField]
@@ -14,7 +14,7 @@ public class VirtualPanTiltCamera : MonoBehaviour
     private float maxPanAngle = 90f;
 
     [Header("Tilt Settings")]
-    [SerializeField]
+    [SerializeField, Range(5f, 10f)]
     private float maxTiltSpeed = 5f;
 
     [SerializeField]
@@ -23,23 +23,39 @@ public class VirtualPanTiltCamera : MonoBehaviour
     [SerializeField]
     private float maxTiltAngle = 45f;
 
+    [Header("Control Update")]
+    [SerializeField, Min(20f)]
+    private float updateRateHz = 30f;
+
     private float currentPan;
     private float currentTilt;
+
+    private float updateTimer;
 
     private void Start()
     {
         currentPan = 0f;
         currentTilt = 0f;
+        updateTimer = 0f;
 
         ApplyRotation();
     }
 
     private void Update()
     {
-        HandleKeyboardInput();
+        updateTimer += Time.deltaTime;
+
+        float updateInterval = 1f / updateRateHz;
+
+        while (updateTimer >= updateInterval)
+        {
+            updateTimer -= updateInterval;
+
+            HandleKeyboardInput(updateInterval);
+        }
     }
 
-    private void HandleKeyboardInput()
+    private void HandleKeyboardInput(float deltaTime)
     {
         float panInput = 0f;
         float tiltInput = 0f;
@@ -49,14 +65,12 @@ public class VirtualPanTiltCamera : MonoBehaviour
         if (keyboard == null)
             return;
 
-        // A / D = Pan left / right
         if (keyboard.aKey.isPressed)
             panInput = -1f;
 
         if (keyboard.dKey.isPressed)
             panInput = 1f;
 
-        // S / W = Tilt down / up
         if (keyboard.sKey.isPressed)
             tiltInput = -1f;
 
@@ -64,22 +78,19 @@ public class VirtualPanTiltCamera : MonoBehaviour
             tiltInput = 1f;
 
         ApplyPanTiltDelta(
-            panInput * maxPanSpeed * Time.deltaTime,
-            tiltInput * maxTiltSpeed * Time.deltaTime
+            panInput * maxPanSpeed * deltaTime,
+            tiltInput * maxTiltSpeed * deltaTime
         );
     }
 
     /// <summary>
     /// Applies a pan/tilt correction in degrees.
-    /// Positive pan  = right
-    /// Negative pan  = left
+    /// Positive pan = right
+    /// Negative pan = left
     /// Positive tilt = up
     /// Negative tilt = down
     /// </summary>
-    public void ApplyPanTiltDelta(
-        float panDelta,
-        float tiltDelta
-    )
+    public void ApplyPanTiltDelta(float panDelta, float tiltDelta)
     {
         currentPan += panDelta;
         currentTilt += tiltDelta;
