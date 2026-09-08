@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e11f0fd92af954fa628be0de87fa70, type: 3}
   m_Name: Figure8Trajectory
   m_EditorClassIdentifier: Assembly-CSharp::Figure8Trajectory
-  width: 10
-  height: 5
+  width: 5
+  height: 2.5
   angularSpeed: 0.5

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b374afa8530a6f443b954a161de5951f, type: 3}
   m_Name: CircularTrajectory
   m_EditorClassIdentifier: Assembly-CSharp::CircularTrajectory
-  radius: 10
+  radius: 3
   angularSpeed: 0.5
   plane: {x: 0, y: 1, z: 0}

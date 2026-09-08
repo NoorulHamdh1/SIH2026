@@ -170,6 +170,78 @@ MonoBehaviour:
   targetCamera: {fileID: 330585545}
   referenceDistance: 100
   updateRateHz: 30
+--- !u!1 &212554910
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 212554912}
+  - component: {fileID: 212554911}
+  - component: {fileID: 212554913}
+  m_Layer: 0
+  m_Name: TrackingSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &212554911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212554910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d8c210a28d98574f937038550da344e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GroundTruthProjection
+  sensorCamera: {fileID: 637836545}
+  target: {fileID: 1828297468}
+  imageWidth: 640
+  imageHeight: 480
+  showDebugInfo: 1
+--- !u!4 &212554912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212554910}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &212554913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212554910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b87277c0833cb642806e29efd79f4cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TempGroundTruthTracker
+  groundTruth: {fileID: 212554911}
+  panTiltCamera: {fileID: 330585548}
+  horizontalFOV: 4
+  verticalFOV: 3
+  imageWidth: 640
+  imageHeight: 480
+  trackingEnabled: 0
+  deadZonePixels: 2
+  maxPanSpeed: 5
+  maxTiltSpeed: 5
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,6 +686,72 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1 &659470790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 659470792}
+  - component: {fileID: 659470791}
+  - component: {fileID: 659470793}
+  m_Layer: 0
+  m_Name: NetworkSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &659470791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659470790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b92644a9ce30a5943924d93d122fdbab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnityTCPServer
+  port: 5005
+  frameWidth: 640
+  frameHeight: 480
+  streamFrames: 1
+  streamRateHz: 30
+--- !u!4 &659470792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659470790}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &659470793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659470790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d112bc4fb96dfd7429bd7d5a31c15db1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFrameCapture
+  sourceTexture: {fileID: 8400000, guid: f3b6da3dd2074d94199bf53c2c70552f, type: 2}
+  frameWidth: 640
+  frameHeight: 480
+  captureRateHz: 30
 --- !u!1 &763408222
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,7 +843,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &784887670
 Transform:
   m_ObjectHideFlags: 0
@@ -898,7 +1036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8178b069dcc27f42a26e3fda256c1fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ImageNoise
-  noiseEnabled: 0
+  noiseEnabled: 1
   noiseType: 1
   noiseStandardDeviation: 10
   coverage: 0.1
@@ -957,7 +1095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1690721947
 Transform:
   m_ObjectHideFlags: 0
@@ -1119,7 +1257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3735edf1e0ad19b41b5b0b61762706dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BeaconTarget
-  trajectory: {fileID: 11400000, guid: 65fdfb12e6a7b4d44873e31dc6bd1985, type: 2}
+  trajectory: {fileID: 11400000, guid: f7061e5680fcff146a19d36198e8e491, type: 2}
   initialPosition: {x: 0, y: 0, z: 100}
   randomizeInitialPosition: 0
   randomXRange: 2
@@ -1318,3 +1456,5 @@ SceneRoots:
   - {fileID: 1661028206}
   - {fileID: 1873406932}
   - {fileID: 600491993}
+  - {fileID: 212554912}
+  - {fileID: 659470792}

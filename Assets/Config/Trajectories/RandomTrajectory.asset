@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1357fb32aedde4ba0d8927d6c35ede, type: 3}
   m_Name: RandomTrajectory
   m_EditorClassIdentifier: Assembly-CSharp::RandomTrajectory
-  speed: 5
-  directionChangeInterval: 2
-  movementRange: 15
+  speed: 0.5
+  directionChangeInterval: 3
+  movementRange: 5
