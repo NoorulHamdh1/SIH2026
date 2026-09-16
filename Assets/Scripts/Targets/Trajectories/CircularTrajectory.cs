@@ -9,6 +9,7 @@ public class CircularTrajectory : BeaconTrajectory
     [Header("Circle")]
     [SerializeField]
     private float radius = 10f;
+//hi
 
     [SerializeField]
     private float angularSpeed = 0.5f;
