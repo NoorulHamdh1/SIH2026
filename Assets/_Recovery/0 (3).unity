@@ -843,7 +843,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &784887670
 Transform:
   m_ObjectHideFlags: 0
@@ -1095,7 +1095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1690721947
 Transform:
   m_ObjectHideFlags: 0
@@ -1257,7 +1257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3735edf1e0ad19b41b5b0b61762706dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BeaconTarget
-  trajectory: {fileID: 11400000, guid: 24ea6644ed71d27469c7bf9566f59dc6, type: 2}
+  trajectory: {fileID: 11400000, guid: 65fdfb12e6a7b4d44873e31dc6bd1985, type: 2}
   initialPosition: {x: 0, y: 0, z: 100}
   randomizeInitialPosition: 0
   randomXRange: 2
