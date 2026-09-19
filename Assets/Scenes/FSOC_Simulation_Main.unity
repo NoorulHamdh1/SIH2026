@@ -989,6 +989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ff5becfaca8e545bf6b742427e0acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpaceEnvironment
+  environmentEnabled: 1
   starCount: 300
   starDistance: 500
   starSpread: 300
@@ -1257,7 +1258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3735edf1e0ad19b41b5b0b61762706dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BeaconTarget
-  trajectory: {fileID: 11400000, guid: 24ea6644ed71d27469c7bf9566f59dc6, type: 2}
+  trajectory: {fileID: 11400000, guid: 0eccd31f9df0c9c479f6495321115b29, type: 2}
   initialPosition: {x: 0, y: 0, z: 100}
   randomizeInitialPosition: 0
   randomXRange: 2
@@ -1356,6 +1357,7 @@ GameObject:
   - component: {fileID: 1873406931}
   - component: {fileID: 1873406930}
   - component: {fileID: 1873406929}
+  - component: {fileID: 1873406933}
   m_Layer: 5
   m_Name: CameraFeedCanvas
   m_TagString: Untagged
@@ -1447,6 +1449,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1873406933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873406928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a4d771bc9f04d4bbf8f33702c713e65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FSOCControlCenterUI
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

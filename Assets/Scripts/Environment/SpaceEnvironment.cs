@@ -1,7 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SpaceEnvironment : MonoBehaviour
 {
+    [Header("Environment")]
+    [SerializeField] private bool environmentEnabled = true;
+
     [Header("Star Field")]
     [SerializeField] private int starCount = 300;
     [SerializeField] private float starDistance = 500f;
@@ -11,12 +15,42 @@ public class SpaceEnvironment : MonoBehaviour
     [Header("Reference")]
     [SerializeField] private Camera targetCamera;
 
+    private readonly List<GameObject> stars = new List<GameObject>();
+    private bool appliedEnvironmentEnabled;
+    private GameObject environmentVisualRoot;
+
     private void Start()
     {
         if (targetCamera == null)
             targetCamera = Camera.main;
 
-        GenerateStars();
+        appliedEnvironmentEnabled = environmentEnabled;
+        SetEnvironmentVisualState(environmentEnabled);
+    }
+
+    private void Update()
+    {
+        if (appliedEnvironmentEnabled == environmentEnabled)
+            return;
+
+        appliedEnvironmentEnabled = environmentEnabled;
+
+        SetEnvironmentVisualState(environmentEnabled);
+    }
+
+    // The generated environment is isolated under one visual root. Toggling it
+    // therefore removes the complete SpaceEnvironment visual contribution from
+    // the camera rather than merely hiding individual star renderers.
+    private void SetEnvironmentVisualState(bool enabled)
+    {
+        if (enabled && environmentVisualRoot == null)
+        {
+            environmentVisualRoot = new GameObject("SpaceEnvironmentVisuals");
+            GenerateStars();
+        }
+
+        if (environmentVisualRoot != null)
+            environmentVisualRoot.SetActive(enabled);
     }
 
     private void GenerateStars()
@@ -34,6 +68,8 @@ public class SpaceEnvironment : MonoBehaviour
             );
 
             star.name = "Star_" + i;
+            star.transform.SetParent(environmentVisualRoot.transform, true);
+            stars.Add(star);
 
             Vector3 randomDirection =
                 Random.insideUnitSphere.normalized;
