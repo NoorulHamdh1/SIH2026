@@ -238,7 +238,7 @@ MonoBehaviour:
   verticalFOV: 3
   imageWidth: 640
   imageHeight: 480
-  trackingEnabled: 1
+  trackingEnabled: 0
   deadZonePixels: 2
   maxPanSpeed: 5
   maxTiltSpeed: 5
@@ -781,7 +781,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1616944280}
   m_Father: {fileID: 1873406932}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1022,7 +1023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 335c40accca49484a965c7cc00823213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AtmosphericConditions
-  currentCondition: 0
+  currentCondition: 2
   intensity: 0.5
   targetCamera: {fileID: 330585545}
 --- !u!114 &1080713959
@@ -1045,6 +1046,119 @@ MonoBehaviour:
   sourceTexture: {fileID: 8400000, guid: e4db70db2ed25354982aea3baf9d2c1e, type: 2}
   outputTexture: {fileID: 8400000, guid: f3b6da3dd2074d94199bf53c2c70552f, type: 2}
   noiseShader: {fileID: 4800000, guid: 127d847a1ba223c4b94e035d63d3c530, type: 3}
+--- !u!1 &1616944279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1616944280}
+  - component: {fileID: 1616944283}
+  - component: {fileID: 1616944282}
+  - component: {fileID: 1616944281}
+  - component: {fileID: 1616944284}
+  m_Layer: 5
+  m_Name: TrackingOverlay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1616944280
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616944279}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 763408223}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1616944281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616944279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49f24ffd3ea05e74387d6f207bc912c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TrackingOverlayUI
+  overlay: {fileID: 1616944280}
+  sensorCamera: {fileID: 637836545}
+  beacon: {fileID: 1828297467}
+  lineThickness: 2
+  dashLength: 12
+  gapLength: 10
+  boxSize: 48
+  boxThickness: 4
+  centerLineColor: {r: 0.75, g: 0.75, b: 0.75, a: 0.65}
+  trackingBoxColor: {r: 0.1, g: 0.75, b: 0.35, a: 0.9}
+--- !u!114 &1616944282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616944279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1616944283
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616944279}
+  m_CullTransparentMesh: 1
+--- !u!114 &1616944284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616944279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RectMask2D
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &1661028205
 GameObject:
   m_ObjectHideFlags: 0
